@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" x-data="app()" :class="{'dark':dark}" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Surabhi K, Computer Science and Engineering student building database-driven apps and researching reliable AI.">
+<title>Surabhi K | CSE Student and Software Developer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{display:['PT Sans','sans-serif'],body:['DM Sans','sans-serif']},colors:{accent:'#FF6B2B','accent-light':'#FF8F5C'}}}}
+</script>
+<style type="text/tailwindcss">
+@layer components{
+.card{@apply rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-accent transition-transform duration-300 hover:-translate-y-1}
+.pill{@apply text-xs px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400}
+.pill-a{@apply text-xs px-3 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700}
+.eyebrow{@apply text-xs font-medium text-accent tracking-widest uppercase mb-3}
+.h2{@apply font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white}
+.muted{@apply text-zinc-500 dark:text-zinc-400 leading-relaxed}
+.band{@apply py-24 bg-zinc-50 dark:bg-zinc-900/40}
+.stag{@apply text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent transition-colors}
+.nl{@apply relative text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors}
+.nl::after{content:'';@apply absolute -bottom-0.5 left-0 h-[1.5px] w-0 bg-current transition-all duration-200}
+.nl:hover::after,.nl.on::after{@apply w-full}
+}
+:root{box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:5rem}
+*,*::before,*::after{box-sizing:border-box}
+html,body{font-family:'DM Sans',sans-serif}
+h1,h2,h3{font-family:'PT Sans',sans-serif}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+main,footer{position:relative;z-index:1}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s}
+.shimmer:hover::after{left:160%}
+[x-cloak]{display:none!important}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+
+<header class="fixed inset-x-0 top-0 z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)]" :class="sc?'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5':''">
+<nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+<a href="#hero" class="font-display font-bold text-xl tracking-tight"><span>surabhi</span><span class="text-accent">.k</span></a>
+<ul class="hidden md:flex items-center gap-8 text-sm">
+<template x-for="l in links" :key="l"><li><a :href="'#'+l" class="nl capitalize" :class="s===l?'on !text-zinc-900 dark:!text-white':''" x-text="l"></a></li></template>
+</ul>
+<div class="flex items-center gap-3">
+<button @click="dark=!dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark?'Switch to light mode':'Switch to dark mode'">
+<svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg x-show="dark" x-cloak class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.4-6.4l-.7.7M6.3 17.7l-.7.7m12.1 0l-.7-.7M6.3 6.3l-.7-.7M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+</button>
+<a href="#contact" class="hidden md:inline-flex shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Hire me &rarr;</a>
+<button @click="mm=!mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" :aria-expanded="mm" aria-label="Toggle menu">
+<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="mm?'M6 18L18 6M6 6l12 12':'M4 6h16M4 12h16M4 18h16'"/></svg>
+</button>
+</div>
+</nav>
+<div x-show="mm" x-cloak x-transition class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+<ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium">
+<template x-for="l in links" :key="l"><li><a :href="'#'+l" @click="mm=false" class="block capitalize text-zinc-700 dark:text-zinc-300 hover:text-accent" x-text="l"></a></li></template>
+</ul>
+</div>
+</header>
+
+<main>
+<section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+<div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+<div class="absolute bottom-1/4 left-0 w-64 h-64 bg-zinc-200/50 dark:bg-zinc-800/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+<div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<p class="reveal eyebrow">Open to entry-level roles</p>
+<h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6">Hi, I'm <span class="text-accent">Surabhi</span></h1>
+<p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-md mb-10">Computer Science and Engineering student. I build <strong class="font-medium text-zinc-700 dark:text-zinc-300">database-driven applications</strong> and study how to make AI answers more reliable.</p>
+<div class="reveal d3 flex flex-wrap gap-4">
+<a href="#work" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">View my work &darr;</a>
+<a href="#contact" class="inline-flex items-center border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Get in touch</a>
+</div>
+<div class="reveal d3 flex gap-8 mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900">
+<div><p class="font-display font-bold text-3xl">8.99</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">CGPA</p></div>
+<div><p class="font-display font-bold text-3xl">2</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Projects built</p></div>
+<div><p class="font-display font-bold text-3xl">1</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Review paper</p></div>
+</div>
+</div>
+<div class="reveal d2 flex justify-center md:justify-end">
+<div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+<div class="w-full h-full rounded-3xl bg-gradient-to-br from-accent to-orange-300 dark:from-orange-600 dark:to-zinc-800 flex items-center justify-center overflow-hidden">
+<span class="font-display font-bold text-white/90 text-9xl tracking-tight" aria-hidden="true">SK</span>
+</div>
+<div class="absolute -bottom-4 -left-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Java &middot; PHP &middot; MySQL</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="skills" class="band">
+<div class="max-w-6xl mx-auto px-6">
+<div class="mb-14"><p class="reveal eyebrow">What I work with</p><h2 class="reveal d1 h2">Skills</h2></div>
+<div class="grid md:grid-cols-3 gap-6">
+<article class="reveal d1 card"><h3 class="font-display font-bold text-xl mb-3">Programming</h3><div class="flex flex-wrap gap-2"><span class="stag">C</span><span class="stag">Java</span><span class="stag">Python</span><span class="stag">SQL</span></div></article>
+<article class="reveal d2 card !bg-zinc-900 dark:!bg-zinc-800 !border-zinc-800"><h3 class="font-display font-bold text-xl text-white mb-3">Databases</h3><div class="flex flex-wrap gap-2"><span class="stag">MySQL</span><span class="stag">MongoDB</span></div><p class="text-sm text-zinc-400 mt-4">Designing structured data for real applications.</p></article>
+<article class="reveal d3 card"><h3 class="font-display font-bold text-xl mb-3">Web</h3><div class="flex flex-wrap gap-2"><span class="stag">HTML</span><span class="stag">CSS</span><span class="stag">JavaScript</span><span class="stag">PHP</span><span class="stag">JSP</span><span class="stag">Servlets</span></div></article>
+<article class="reveal d1 card"><h3 class="font-display font-bold text-xl mb-3">Tools</h3><div class="flex flex-wrap gap-2"><span class="stag">Git</span><span class="stag">GitHub</span><span class="stag">VS Code</span><span class="stag">Eclipse</span><span class="stag">Android Studio</span><span class="stag">StarUML</span><span class="stag">LaTeX</span></div></article>
+<article class="reveal d2 card"><h3 class="font-display font-bold text-xl mb-3">Core concepts</h3><div class="flex flex-wrap gap-2"><span class="stag">OOP</span><span class="stag">DBMS</span><span class="stag">Data Structures &amp; Algorithms</span><span class="stag">Computer Networks</span></div></article>
+<article class="reveal d3 card"><h3 class="font-display font-bold text-xl mb-3">Certifications</h3><ul class="muted text-sm space-y-2"><li>Computer Networks, Coursera</li><li>Artificial Intelligence, Coursera</li><li>Fundamentals of Cyber Security, Coursera</li></ul></article>
+</div>
+</div>
+</section>
+
+<section id="work" class="py-24">
+<div class="max-w-6xl mx-auto px-6">
+<div class="mb-14"><p class="reveal eyebrow">Portfolio</p><h2 class="reveal d1 h2">Selected work</h2></div>
+<div class="grid md:grid-cols-2 gap-6">
+<article class="reveal d1 card !p-0 overflow-hidden bg-zinc-100">
+<div class="h-48 bg-gradient-to-br from-zinc-800 to-zinc-600 flex items-center justify-center"><span class="font-display font-bold text-6xl text-white/80">Java</span></div>
+<div class="p-7"><div class="flex flex-wrap gap-2 mb-4"><span class="pill-a">Jun to Aug 2026</span><span class="pill">Java</span><span class="pill">MySQL</span><span class="pill">HTML</span><span class="pill">CSS</span></div>
+<h3 class="font-display font-bold text-2xl mb-2">Employee Salary Management System</h3>
+<p class="muted text-sm">Streamlines employee operations: add, delete and update employee records. Built on a structured MySQL database, combining core programming with DBMS design into a working, real-world application.</p></div>
+</article>
+<article class="reveal d2 card !p-0 overflow-hidden bg-zinc-100">
+<div class="h-48 bg-gradient-to-br from-accent to-orange-400 flex items-center justify-center"><span class="font-display font-bold text-6xl text-white/90">PHP</span></div>
+<div class="p-7"><div class="flex flex-wrap gap-2 mb-4"><span class="pill-a">Jun to Aug 2026</span><span class="pill">PHP</span><span class="pill">MySQL</span><span class="pill">HTML</span><span class="pill">CSS</span></div>
+<h3 class="font-display font-bold text-2xl mb-2">Employee CRUD Management System</h3>
+<p class="muted text-sm">A web application for managing employee records. PHP connects to MySQL to create, read, update and delete employee information through a simple interface.</p></div>
+</article>
+<article class="reveal d1 card md:col-span-2 grid md:grid-cols-3 gap-6 items-center">
+<div class="md:col-span-2"><div class="flex flex-wrap gap-2 mb-4"><span class="pill-a">Review paper</span><span class="pill">LLMs</span><span class="pill">RAG</span><span class="pill">IEEE format</span></div>
+<h3 class="font-display font-bold text-2xl mb-2">Hallucination detection and mitigation in LLMs using RAG</h3>
+<p class="muted text-sm">Reviewed how hallucinations in Large Language Models are detected, evaluated and reduced, and studied Retrieval-Augmented Generation (RAG) as a way to make answers more factual and relevant. Contributed to literature analysis and paper preparation.</p></div>
+<div class="rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-700 dark:from-zinc-800 dark:to-zinc-700 h-32 md:h-full min-h-32 flex items-center justify-center"><span class="font-display font-bold text-5xl text-white/80">RAG</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="about" class="band">
+<div class="max-w-6xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-start">
+<div>
+<p class="reveal eyebrow">About me</p>
+<h2 class="reveal d1 h2 leading-tight mb-6">A bit about<br>who I am</h2>
+<p class="reveal d2 muted mb-4">I'm a Computer Science and Engineering student looking for an entry-level software development role where I can apply my programming, problem-solving and database skills.</p>
+<p class="reveal d3 muted mb-8">I enjoy learning new technologies and contributing to real-world software projects.</p>
+<p class="reveal text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-3">Interests</p>
+<div class="reveal flex flex-wrap gap-2"><span class="stag">Software development</span><span class="stag">Emerging technology</span><span class="stag">Database management</span><span class="stag">AI-powered applications</span><span class="stag">Open source</span><span class="stag">DSA</span></div>
+</div>
+<div>
+<p class="reveal eyebrow">Education</p>
+<ol class="space-y-4">
+<li class="reveal d1 card !p-6"><p class="text-xs text-accent font-medium">2024 to present</p><h3 class="font-display font-bold text-lg">B.E. Computer Science and Engineering</h3><p class="muted text-sm">Alva's Institute of Engineering and Technology, Moodbidri &middot; CGPA 8.99</p></li>
+<li class="reveal d2 card !p-6"><p class="text-xs text-accent font-medium">2022 to 2024</p><h3 class="font-display font-bold text-lg">Pre-University Course</h3><p class="muted text-sm">Alpha PU College, KR Nagar, Mysore &middot; 91.12%</p></li>
+<li class="reveal d3 card !p-6"><p class="text-xs text-accent font-medium">2019 to 2022</p><h3 class="font-display font-bold text-lg">High School (SSLC)</h3><p class="muted text-sm">BS Madappa School &middot; 93.44%</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="py-24">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<p class="reveal eyebrow">Contact</p>
+<h2 class="reveal d1 h2 mb-4">Let's work together</h2>
+<p class="reveal d2 muted mb-10">I'm looking for an entry-level software development opportunity. Email is the quickest way to reach me.</p>
+<a href="mailto:surabhikumar2006@gmail.com" class="reveal d2 shimmer inline-flex bg-accent text-white font-medium px-8 py-4 rounded-full hover:bg-accent-light transition-colors mb-8 break-all">surabhikumar2006@gmail.com</a>
+<div class="reveal d3 flex flex-wrap justify-center gap-3 text-sm">
+<a href="tel:+918296972273" class="border border-zinc-300 dark:border-zinc-700 px-6 py-2.5 rounded-full hover:border-accent transition-colors">+91 82969 72273</a>
+<a href="https://www.linkedin.com/in/surabhikumar2006" target="_blank" rel="noopener" class="border border-zinc-300 dark:border-zinc-700 px-6 py-2.5 rounded-full hover:border-accent transition-colors">LinkedIn</a>
+<a href="https://github.com/surabhikumar2006" target="_blank" rel="noopener" class="border border-zinc-300 dark:border-zinc-700 px-6 py-2.5 rounded-full hover:border-accent transition-colors">GitHub</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+<div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+<p class="text-sm text-zinc-500">&copy; 2026 Surabhi K</p>
+<p class="text-xs text-zinc-500">Based on the Folio template by Laurent Begey (MIT)</p>
+</div>
+</footer>
+
+<script>
+function app(){return{dark:false,mm:false,sc:false,s:'hero',links:['skills','work','about','contact'],
+init(){
+let t=null;try{t=localStorage.getItem('theme')}catch(e){}
+this.dark=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+this.$watch('dark',v=>{try{localStorage.setItem('theme',v?'dark':'light')}catch(e){}});
+addEventListener('scroll',()=>{this.sc=scrollY>20;this.spy()},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+},
+spy(){if(innerHeight+scrollY>=document.body.scrollHeight-60){this.s='contact';return}
+for(const id of ['contact','about','work','skills','hero']){const el=document.getElementById(id);if(el&&scrollY>=el.offsetTop-130){this.s=id;return}}}}}
+</script>
+</body>
+</html>
